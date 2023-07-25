@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "431535707736",
+    "project_id": "maidmatch-4c8e2",
+    "storage_bucket": "maidmatch-4c8e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431535707736:android:c1b74986fd415ba877dc2d",
+        "android_client_info": {
+          "package_name": "com.example.maidmatch_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431535707736-mbhj01j48ooknbt54kvpjqqcfa4deot8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWQak7sUWJX3q9NYTjA9DHdzhVLqoVyGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431535707736-mbhj01j48ooknbt54kvpjqqcfa4deot8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
