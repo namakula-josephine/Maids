@@ -38,6 +38,14 @@ class AuthProvider extends ChangeNotifier{
   
 }
 
+Future setSignIn() async {
+ final SharedPreferences s = await SharedPreferences.getInstance();
+ s.setBool("is_signedin", true);
+ _isSignedIn = true;
+ notifyListeners();
+
+}
+
   void signInWithPhone(BuildContext context, String phoneNumber) async {
     try{
       await _firebaseAuth.verifyPhoneNumber(
