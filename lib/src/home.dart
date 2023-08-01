@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../utils/app_styles.dart';
 
@@ -27,11 +28,47 @@ class _homeScreenState extends State<homeScreen> {
       body:ListView(
           padding: const EdgeInsets.symmetric(horizontal:25 , vertical: 45),
           children: [
-                        InkWell(
-              onTap: (){},
-              child: Image.asset("assets/perm.jpg",
-                  height: 250,),
+            Text("Help us know what you're looking for!", style: Styles.headlineStyle2, textAlign:TextAlign.center,),
+            Gap(70),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(),
+                color: Colors.white,
+              ),
+              width: 100,
+              height: 100,
+              child: Row(
+                children: [
+                      Image.asset("assets/maid.jpg",
+                      height: 60,),
+                      Image.asset("assets/perm.jpg",
+                      height: 60,),
+                      Text("PERMANENT" , style: Styles.headlineStyle3,),
+                ],
+              ),
             ),
+            Gap(50),
+            Container(
+              
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(),
+                color: Colors.white,
+              ),
+              width: 100,
+              height: 100,
+              child: Row(
+                children: [
+                      Image.asset("assets/maid.jpg",
+                      height: 50,),
+                      Image.asset("assets/temp.jpg",
+                      height: 50,),
+                      Text("TEMPORARY", style: Styles.headlineStyle3,),
+                ],
+              ),
+            ),
+
           ]
     ));
   }
