@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:maidmatch_app/comp/custom_button.dart';
 import 'package:maidmatch_app/model/user_model.dart';
 import 'package:maidmatch_app/provider/auth_provider.dart';
+import 'package:maidmatch_app/src/home.dart';
 import 'package:maidmatch_app/utils/utils.dart';
 import 'package:provider/provider.dart';
 
@@ -174,9 +175,8 @@ void storeData () async {
         userModel: userModel,
         profilePic: image!,
         onSuccess:(){
-          ap.saveUserDataToSP().then((value) {
-            
-          });
+          ap.saveUserDataToSP().then((value) => Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context)=> const homeScreen()), (route) => false));
         },
       );
      }else{
