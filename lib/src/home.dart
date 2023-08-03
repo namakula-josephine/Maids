@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:maidmatch_app/src/book_temp.dart';
 
 import '../utils/app_styles.dart';
 
@@ -49,23 +50,32 @@ class _homeScreenState extends State<homeScreen> {
               ),
             ),
             Gap(50),
-            Container(
-              
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(),
-                color: Colors.white,
-              ),
-              width: 100,
-              height: 100,
-              child: Row(
-                children: [
-                      Image.asset("assets/maid.jpg",
-                      height: 50,),
-                      Image.asset("assets/temp.jpg",
-                      height: 50,),
-                      Text("TEMPORARY", style: Styles.headlineStyle3,),
-                ],
+            GestureDetector(
+              onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => bookpage1()),
+              );
+            },
+
+              child: Container(
+                
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(),
+                  color: Colors.white,
+                ),
+                width: 100,
+                height: 100,
+                child: Row(
+                  children: [
+                        Image.asset("assets/maid.jpg",
+                        height: 50,),
+                        Image.asset("assets/temp.jpg",
+                        height: 50,),
+                        Text("TEMPORARY", style: Styles.headlineStyle3,),
+                  ],
+                ),
               ),
             ),
 
