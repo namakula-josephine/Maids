@@ -1,6 +1,4 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 import '../utils/app_styles.dart';
 
@@ -16,66 +14,99 @@ class _bookpage1State extends State<bookpage1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: Text("MAID MATCH", style: Styles.headlineStyle, textAlign:TextAlign.center,),
-              leading: IconButton(
-              icon: Icon(Icons.menu, color: Colors.black),
-              onPressed: () {
+        backgroundColor: Colors.white,
+        title: Text(
+          "MAID MATCH",
+          style: Styles.headlineStyle,
+          textAlign: TextAlign.center,
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.menu, color: Colors.black),
+          onPressed: () {
             Scaffold.of(context).openDrawer();
           },
         ),
-            ),
+      ),
       backgroundColor: Styles.backgColor,
-      body: SafeArea(
-        child: ListView(
-          children: [
-             
-             Gap(50),
-            Container(
-              padding:  const EdgeInsets.symmetric(horizontal:25 , vertical: 45),
-              child: Column(
+      body: Center(
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 150,
+                      height: 150,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Container(
+                      width: 150,
+                      height: 150,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Gap(10),
-                  Row(
-                    children: [
-                      ClipOval(
-                        child: Image.asset("assets/laundry.jpg",
-                        height: 80,
-                      
-                        ),
-                      ),
-                      Gap(130),
-                      Container(
-                        padding: const EdgeInsets.symmetric( vertical: 5),
-                        decoration: BoxDecoration(
-                        ),
-                        child: Column(
-                          children: [
-                            ClipOval(
-                              child: Image.asset("assets/clean.jpg",
-                                height: 80,),
-                            ),
-                            Text('Cleaning',style: Styles.headlineStyle5),
-                          ],
-                        ),
-                      ),
-
-                    ],
+                  Container(
+                    width: 150,
+                    height: 150,
+                    child: Icon(Icons.shopping_cart, size: 100),
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
                   ),
-                Container(
-                   child: Icon(
-                   EvaIcons.shoppingCart, // Specify the cart icon here
-                   size: 95, // Adjust the size as needed
-                   color: Colors.black, // Choose the desired color for the icon
-                   
-                 ),),
-                 
                 ],
               ),
-            ),
-
-          ],
-        )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 150,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Container(
+                    width: 150,
+                    height: 150,
+                    child: Center(
+                      child: Text(
+                        "CUSTOM ORDER",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
