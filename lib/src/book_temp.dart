@@ -16,24 +16,88 @@ class _bookpage1State extends State<bookpage1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: Text("MAID MATCH", style: Styles.headlineStyle, textAlign:TextAlign.center,),
-              leading: IconButton(
-              icon: Icon(Icons.menu, color: Colors.black),
-              onPressed: () {
+        backgroundColor: Colors.white,
+        title: Text(
+          "MAID MATCH",
+          style: Styles.headlineStyle,
+          textAlign: TextAlign.center,
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.menu, color: Colors.black),
+          onPressed: () {
             Scaffold.of(context).openDrawer();
           },
         ),
-            ),
+      ),
       backgroundColor: Styles.backgColor,
-      body: SafeArea(
-        child: ListView(
-          children: [
-             
-             Gap(100),
-             RevolvingIconsWidget(),
-          ],
-        )),
+      body: Center(
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 150,
+                      height: 150,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Container(
+                      width: 150,
+                      height: 150,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 150,
+                    height: 150,
+                    child: Icon(Icons.shopping_cart, size: 100),
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 150,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Container(
+                    width: 150,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
