@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:maidmatch_app/src/b_perm.dart';
 import 'package:maidmatch_app/src/book_temp.dart';
+
 
 import '../utils/app_styles.dart';
 
@@ -39,29 +41,37 @@ class _homeScreenState extends State<homeScreen> {
                 textAlign: TextAlign.center,
               ),
               Gap(70),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(),
-                  color: Colors.white,
-                ),
-                width: 100,
-                height: 100,
-                child: Row(
-                  children: [
-                    Image.asset(
-                      "assets/maid.jpg",
-                      height: 60,
-                    ),
-                    Image.asset(
-                      "assets/perm.jpg",
-                      height: 60,
-                    ),
-                    Text(
-                      "PERMANENT",
-                      style: Styles.headlineStyle3,
-                    ),
-                  ],
+              GestureDetector(
+                onTap: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => bPerm1() ),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(),
+                    color: Colors.white,
+                  ),
+                  width: 100,
+                  height: 100,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/maid.jpg",
+                        height: 60,
+                      ),
+                      Image.asset(
+                        "assets/perm.jpg",
+                        height: 60,
+                      ),
+                      Text(
+                        "PERMANENT",
+                        style: Styles.headlineStyle3,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Gap(50),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:maidmatch_app/src/rotate_icon.dart';
 
 import '../utils/app_styles.dart';
 
@@ -87,6 +85,17 @@ class _bookpage1State extends State<bookpage1> {
                   Container(
                     width: 150,
                     height: 150,
+                    child: Center(
+                      child: Text(
+                        "CUSTOM ORDER",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
