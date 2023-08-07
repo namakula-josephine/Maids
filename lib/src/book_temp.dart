@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maidmatch_app/src/check.dart';
 
 import '../utils/app_styles.dart';
 
@@ -60,13 +61,21 @@ class _bookpage1State extends State<bookpage1> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 150,
-                    height: 150,
-                    child: Icon(Icons.shopping_cart, size: 100),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => checkout()),
+                      );
+                    },
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      child: Icon(Icons.shopping_cart, size: 100),
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
@@ -85,9 +94,9 @@ class _bookpage1State extends State<bookpage1> {
                   Container(
                     width: 150,
                     height: 150,
-                    child: Center(
+                    child: const Center(
                       child: Text(
-                        "CUSTOM ORDER",
+                        "CUSTOM\nORDER",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 18,

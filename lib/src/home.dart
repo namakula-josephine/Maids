@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:maidmatch_app/src/b_perm.dart';
 import 'package:maidmatch_app/src/book_temp.dart';
 
-
 import '../utils/app_styles.dart';
 
 class homeScreen extends StatefulWidget {
@@ -43,9 +42,9 @@ class _homeScreenState extends State<homeScreen> {
               Gap(70),
               GestureDetector(
                 onTap: () {
-                    Navigator.push(
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => bPerm1() ),
+                    MaterialPageRoute(builder: (context) => bPerm1()),
                   );
                 },
                 child: Container(
