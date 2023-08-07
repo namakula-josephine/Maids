@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:maidmatch_app/src/babysit.dart';
 import 'package:maidmatch_app/src/check.dart';
+import 'package:maidmatch_app/src/clean.dart';
+import 'package:maidmatch_app/src/custom.dart';
+import 'package:maidmatch_app/src/laundry.dart';
 
 import '../utils/app_styles.dart';
 
@@ -39,30 +43,48 @@ class _bookpage1State extends State<bookpage1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      width: 150,
-                      height: 150,
-                      child: ClipOval(
-                        child: Image.asset("assets/laundry.jpg",
-                        fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => Laundryform())));
+                      },
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        child: ClipOval(
+                          child: Image.asset(
+                            "assets/laundry.jpg",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
                         ),
                       ),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
                     ),
-                    Container(
-                      width: 150,
-                      height: 150,
-                      child: ClipOval(
-                        child: Image.asset("assets/cleaner2.jpg",
-                        fit: BoxFit.cover,
-                       ),
-                      ),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => Cleanform())));
+                      },
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        child: ClipOval(
+                          child: Image.asset(
+                            "assets/cleaner2.jpg",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -93,36 +115,53 @@ class _bookpage1State extends State<bookpage1> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 150,
-                    height: 150,
-                    child: ClipOval(
-                      child: Image.asset("assets/babysit.jpg",
-                      fit: BoxFit.cover,
-                      ),
-                      ),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Container(
-                    width: 150,
-                    height: 150,
-                    child: const Center(
-                      child: Text(
-                        "CUSTOM\nORDER",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                  GestureDetector(
+                    onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => Babysitform())));
+                      },
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      child: ClipOval(
+                        child: Image.asset(
+                          "assets/babysit.jpg",
+                          fit: BoxFit.cover,
                         ),
                       ),
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
                     ),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => Customform())));
+                      },
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      child: const Center(
+                        child: Text(
+                          "CUSTOM\nORDER",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
