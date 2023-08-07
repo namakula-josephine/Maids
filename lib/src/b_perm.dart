@@ -14,17 +14,10 @@ class _bPerm1State extends State<bPerm1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.orange,
           title: Text(
             "MAID MATCH",
-            style: Styles.headlineStyl,
             textAlign: TextAlign.center,
-          ),
-          leading: IconButton(
-            icon: Icon(Icons.menu, color: Colors.black),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
           ),
         ),
         backgroundColor: Styles.backgColor,
