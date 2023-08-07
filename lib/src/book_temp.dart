@@ -18,7 +18,7 @@ class _bookpage1State extends State<bookpage1> {
         backgroundColor: Colors.white,
         title: Text(
           "MAID MATCH",
-          style: Styles.headlineStyle,
+          style: Styles.headlineStyl,
           textAlign: TextAlign.center,
         ),
         leading: IconButton(
@@ -42,6 +42,11 @@ class _bookpage1State extends State<bookpage1> {
                     Container(
                       width: 150,
                       height: 150,
+                      child: ClipOval(
+                        child: Image.asset("assets/laundry.jpg",
+                        fit: BoxFit.cover,
+                        ),
+                      ),
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
@@ -50,6 +55,11 @@ class _bookpage1State extends State<bookpage1> {
                     Container(
                       width: 150,
                       height: 150,
+                      child: ClipOval(
+                        child: Image.asset("assets/cleaner2.jpg",
+                        fit: BoxFit.cover,
+                       ),
+                      ),
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
@@ -86,6 +96,11 @@ class _bookpage1State extends State<bookpage1> {
                   Container(
                     width: 150,
                     height: 150,
+                    child: ClipOval(
+                      child: Image.asset("assets/babysit.jpg",
+                      fit: BoxFit.cover,
+                      ),
+                      ),
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,

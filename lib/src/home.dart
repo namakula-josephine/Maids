@@ -20,7 +20,7 @@ class _homeScreenState extends State<homeScreen> {
           backgroundColor: Colors.white,
           title: Text(
             "MAID MATCH",
-            style: Styles.headlineStyle,
+            style: Styles.headlineStyl,
             textAlign: TextAlign.center,
           ),
           leading: IconButton(
