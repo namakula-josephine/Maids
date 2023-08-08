@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../utils/app_styles.dart';
 
-class checkout extends StatefulWidget {
-  const checkout({super.key});
+class Checkout extends StatefulWidget {
+  const Checkout({super.key});
 
   @override
-  State<checkout> createState() => _checkoutState();
+  State<Checkout> createState() => _CheckoutState();
 }
 
-class _checkoutState extends State<checkout> {
+class _CheckoutState extends State<Checkout> {
   List<String> selectedItems = []; 
   @override
   Widget build(BuildContext context) {

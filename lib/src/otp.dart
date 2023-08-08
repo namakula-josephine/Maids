@@ -130,7 +130,7 @@ class _OtpScreenState extends State<OtpScreen> {
         ap.checkExistingUser().then((value) async {
          if(value == true){
             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-            builder: (context) => const homeScreen()),
+            builder: (context) => const HomeScreen()),
             (route) => false); 
           
          }else{
