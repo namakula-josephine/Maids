@@ -16,68 +16,89 @@ class _bPerm1State extends State<bPerm1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.orange,
         title: Text(
           "MAID MATCH",
-          style: Styles.headlineStyl,
           textAlign: TextAlign.center,
         ),
       ),
       backgroundColor: Styles.backgColor,
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  'Give us your maids\n description',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-              ),
-              SizedBox(height: 20),
-              Text(
-                'PERMANENT MAIDS ARE\n AVAILABLE AT ONLY UGX 400,000\n PAID MONTHLY TO\n MAIDMATCH.',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 18,
-                ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.all(20),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText:
-                        'Type your maid description\n here to get your match.....',
+      body: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  child: const Center(
+                    child: Text(
+                      'Give us your maid\n description',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                padding: EdgeInsets.all(20),
-                child: const Text(
-                  'NOTE: This process takes\n two weeks to find your\n match and a 20% deposit\n is made if your match is\n found.',
-                  style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    color: Colors.grey,
-                    fontSize: 18,
+                const SizedBox(height: 20),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[400],
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'PERMANENT MAIDS ARE\n AVAILABLE AT ONLY UGX 400,000\n PAID MONTHLY TO\n MAIDMATCH.',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
-              ),
-              Gap(50),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: customButton(text: "Login", onPressed: () => Checkout()),
-              ),
-            ],
+                const SizedBox(height: 20),
+                Container(
+                  width: 320,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  padding: const EdgeInsets.all(20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Type your maid description here\nto get your match...',
+                      border: InputBorder.none, 
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: const Text(
+                    'NOTE: This process takes\ntwo weeks to find your\nmatch and a 20% deposit\nis made if your match is\nfound.',
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Colors.grey,
+                      fontSize: 18,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const Gap(50),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child:
+                      customButton(text: "SUBMIT", onPressed: () => Checkout()),
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
