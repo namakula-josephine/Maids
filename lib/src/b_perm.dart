@@ -22,12 +22,6 @@ class _bPerm1State extends State<bPerm1> {
           style: Styles.headlineStyl,
           textAlign: TextAlign.center,
         ),
-        leading: IconButton(
-          icon: Icon(Icons.menu, color: Colors.black),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-        ),
       ),
       backgroundColor: Styles.backgColor,
       body: Center(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import '../utils/app_styles.dart';
 
 class Checkout extends StatefulWidget {
@@ -13,20 +14,6 @@ class _CheckoutState extends State<Checkout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          "MAID MATCH",
-          style: Styles.headlineStyle,
-          textAlign: TextAlign.center,
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.menu, color: Colors.black),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-        ),
-      ),
       backgroundColor: Styles.backgColor,
       body: Container(
         padding: EdgeInsets.only(top: 20.0),
@@ -34,6 +21,7 @@ class _CheckoutState extends State<Checkout> {
           children: [
             Row(
               children: [
+                Padding(padding: const EdgeInsets.symmetric(horizontal: 15) ),
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
@@ -51,10 +39,10 @@ class _CheckoutState extends State<Checkout> {
                     ),
                     width: 150,
                     height: 150,
-                    child: Icon(
-                      Icons.shopping_cart,
-                      size: 80,
-                    ),
+                    child:LottieBuilder.asset("assets/cart.json",
+                        height: 90,
+                        width: 90,
+                        ),
                   ),
                 ),
                 Expanded(

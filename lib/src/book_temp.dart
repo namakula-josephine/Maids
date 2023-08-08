@@ -3,6 +3,7 @@ import 'package:maidmatch_app/src/babysit.dart';
 import 'package:maidmatch_app/src/check.dart';
 import 'package:maidmatch_app/src/clean.dart';
 import 'package:maidmatch_app/src/custom.dart';
+//import 'package:maidmatch_app/src/hidden_menu.dart';
 import 'package:maidmatch_app/src/laundry.dart';
 
 import '../utils/app_styles.dart';
@@ -19,18 +20,12 @@ class _bookpage1State extends State<bookpage1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.orange,
         title: Text(
           "MAID MATCH",
-          style: Styles.headlineStyl,
           textAlign: TextAlign.center,
         ),
-        leading: IconButton(
-          icon: Icon(Icons.menu, color: Colors.black),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-        ),
+
       ),
       backgroundColor: Styles.backgColor,
       body: Center(

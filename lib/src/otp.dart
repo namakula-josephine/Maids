@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:maidmatch_app/comp/custom_button.dart';
 import 'package:maidmatch_app/provider/auth_provider.dart';
-import 'package:maidmatch_app/src/home.dart';
+import 'package:maidmatch_app/src/hidden_menu.dart';
 import 'package:maidmatch_app/src/setupUser.dart';
 import 'package:maidmatch_app/utils/utils.dart';
 import 'package:pinput/pinput.dart';
@@ -130,7 +130,7 @@ class _OtpScreenState extends State<OtpScreen> {
         ap.checkExistingUser().then((value) async {
          if(value == true){
             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-            builder: (context) => const HomeScreen()),
+            builder: (context) => const hiddenMenu()),
             (route) => false); 
           
          }else{

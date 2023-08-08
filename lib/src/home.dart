@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:lottie/lottie.dart';
 import 'package:maidmatch_app/src/b_perm.dart';
 import 'package:maidmatch_app/src/book_temp.dart';
 
@@ -16,20 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text(
-            "MAID MATCH",
-            style: Styles.headlineStyl,
-            textAlign: TextAlign.center,
-          ),
-          leading: IconButton(
-            icon: Icon(Icons.menu, color: Colors.black),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          ),
-        ),
         backgroundColor: Styles.backgColor,
         body: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 45),
@@ -61,10 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         "assets/maid.jpg",
                         height: 60,
                       ),
-                      Image.asset(
-                        "assets/perm.jpg",
-                        height: 60,
-                      ),
+                        LottieBuilder.asset("assets/p2.json",
+                        height: 95,
+                        width: 95,
+                        ),
                       Text(
                         "PERMANENT",
                         style: Styles.headlineStyle3,
@@ -95,10 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         "assets/maid.jpg",
                         height: 50,
                       ),
-                      Image.asset(
-                        "assets/temp.jpg",
-                        height: 50,
-                      ),
+                      LottieBuilder.asset("assets/timer.json",
+                      height: 80,),
                       Text(
                         "TEMPORARY",
                         style: Styles.headlineStyle3,
