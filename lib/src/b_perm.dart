@@ -70,8 +70,9 @@ class _bPerm1State extends State<bPerm1> {
                   padding: const EdgeInsets.all(20),
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: 'Type your maid description here\nto get your match...',
-                      border: InputBorder.none, 
+                      hintText:
+                          'Type your maid description here\nto get your match...',
+                      border: InputBorder.none,
                     ),
                   ),
                 ),
