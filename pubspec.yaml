@@ -52,6 +52,11 @@ dependencies:
   animations: ^2.0.7
   hidden_drawer_menu: ^3.0.1
   lottie: ^2.5.0
+  map_location_picker: ^1.2.5
+  date_field: ^3.0.5
+  avatar_glow: ^2.0.2
+  dropdown_button2: ^2.3.7
+  firebase_database: ^10.2.4
 
 dev_dependencies:
   flutter_test:
