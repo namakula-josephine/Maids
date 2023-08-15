@@ -11,7 +11,7 @@ class Checkout extends StatefulWidget {
 }
 
 class _CheckoutState extends State<Checkout> {
-class _checkoutState extends State<checkout> {
+
 
     final CollectionReference _laundry = 
   FirebaseFirestore.instance.collection('laundry');
