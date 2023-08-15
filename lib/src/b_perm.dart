@@ -94,7 +94,7 @@ class _bPerm1State extends State<bPerm1> {
                   width: double.infinity,
                   height: 50,
                   child:
-                      customButton(text: "SUBMIT", onPressed: () => Checkout()),
+                      customButton(text: "SUBMIT", onPressed: () => checkout()),
                 ),
               ],
             ),
