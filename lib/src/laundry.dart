@@ -3,7 +3,9 @@ import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gap/gap.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maidmatch_app/comp/custom_button.dart';
 
 import '../utils/app_styles.dart';
@@ -17,8 +19,7 @@ class Laundryform extends StatefulWidget {
 
 class _LaundryformState extends State<Laundryform> {
   final db = FirebaseFirestore.instance;
-  FirebaseDatabase database = FirebaseDatabase.instance;
-
+  final _auth = FirebaseAuth.instance;
   final List<String> category = [
   'Light-Many',
   'Light-Few',
@@ -118,9 +119,11 @@ class _LaundryformState extends State<Laundryform> {
                 if (value == null) {
                   return 'Please select category.';
                 }
+                
                 return null;
               },
               onChanged: (value) {
+                selectedValue = value.toString();
                 //Do something when selected item is changed.
               },
               onSaved: (value) {
@@ -162,13 +165,38 @@ class _LaundryformState extends State<Laundryform> {
             Gap(30),
             customButton(
               text: "submit",
-             onPressed: (){
+             onPressed:  () async{
 
-               /* Map<String, dynamic> data ={
-                  "category": selectedValue,
-                  "request_time": selectedtime,
-                  "request_date": selecteddate,
-                }; */
+              final userId = _auth.currentUser?.uid;
+               if (selectedValue != null && selecteddate != null &&  selectedtime != null ){
+                final id = userId !+ DateTime.now().toString();
+                    // Create a new document in the `Users` collection with the user's id as the document id.
+            await   db.collection("Laundry order").doc('${id}').set({
+                'quantity':selectedValue,
+                'date':selecteddate,
+                'time':selectedtime,
+                'userid':userId,
+                'id': id
+               });
+                 Fluttertoast.showToast(
+        msg: 'Order made succesfully',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+      Navigator.pop(context);
+               } else {
+                Fluttertoast.showToast(
+        msg: 'Please Select all the fields',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+               }
+            
+    
               
 
              })
