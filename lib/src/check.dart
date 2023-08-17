@@ -19,10 +19,11 @@ final _auth = FirebaseAuth.instance;
 final Stream<QuerySnapshot> _usersStream =
    FirebaseFirestore.instance
               .collection('Laundry order')
-              .where('userid', isEqualTo:  '${FirebaseAuth.instance.currentUser?.uid}')
+              .where('category',isEqualTo: 'Laundry')
+            //  .where('userid', isEqualTo:  '${FirebaseAuth.instance.currentUser?.uid}')
               .snapshots();
      final CollectionReference userCollection =
-      FirebaseFirestore.instance.collection('Laundry order');
+      FirebaseFirestore.instance.collection('orders');
 
   // Stream documents where the 'status' field is equal to 'active'
   Stream<QuerySnapshot> streamOrders() {
@@ -55,26 +56,28 @@ final Stream<QuerySnapshot> _usersStream =
               final userData = activeUsers[index].data() as Map<String, dynamic>;
                var date = userData['date'];
                if (date != null){
-                   date = DateFormat('yyyy-MM-dd').format(userData['time'].toDate().toLocal()).toString()+'         '+DateFormat('h:mm a').format(userData['date'].toDate()).toString();
+                   date = DateFormat('yyyy-MM-dd').format(userData['start-time'].toDate().toLocal()).toString()+'         '+DateFormat('h:mm a').format(userData['date'].toDate()).toString();
                } else {
                 date = '';
                }
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                margin: const EdgeInsets.all(15),
-                width: 30,
-                height: 60,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.orangeAccent
-                  ),
-                  borderRadius: BorderRadius.circular(10)
+              return ListTile(
+                title: Row(
+                  children: [
+                    Text(userData['category'] ?? ''),SizedBox(width: 100),
+                    ElevatedButton(onPressed: (){}, child: Text('Remove'))
+                  ],
                 ),
-                child: ListTile(
-                  title: Text(userData['quantity'] ?? ''),
-                  subtitle: Text(date ?? ''),
-                  // ... other UI elements for each document
+                subtitle: Row(
+                  children: [
+                    Text(date ?? '',),SizedBox(width: 20),
+                    Text(userData['status'],style: TextStyle(
+            color: userData['status']=='Pending' ? Colors.red : Colors.green,
+            fontSize: 14.0,
+            fontWeight: FontWeight.bold,
+          ),),
+                  ],
                 ),
+                // ... other UI elements for each document
               );
             },
           );

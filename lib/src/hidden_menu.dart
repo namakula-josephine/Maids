@@ -27,7 +27,7 @@ class _hiddenMenuState extends State<hiddenMenu> {
           baseStyle: TextStyle(), 
           selectedStyle: TextStyle(),
           ), 
-        homeScreen()),
+        HomeScreen()),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
           name: 'My Orders', 

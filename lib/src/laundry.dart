@@ -165,13 +165,15 @@ class _LaundryformState extends State<Laundryform> {
                if (selectedValue != null && selecteddate != null &&  selectedtime != null ){
                 final id = userId !+ DateTime.now().toString();
                     // Create a new document in the `Users` collection with the user's id as the document id.
-            await   db.collection("Laundry order").doc('${id}').set({
+            await   db.collection("orders").doc('${id}').set({
                 'quantity':selectedValue,
                 'date':selecteddate,
-                'time':selectedtime,
+                'start-time':selectedtime,
                 'userid':userId,
-                'status':status,
-                'id': id
+                 'maid_id':'',
+                'id': id,
+                'category':'Laundry',
+                 'status':'Pending'
                });
                  Fluttertoast.showToast(
         msg: 'Order made succesfully',

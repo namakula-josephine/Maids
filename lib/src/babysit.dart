@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import '../comp/custom_button.dart';
 import '../utils/app_styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Babysitform extends StatefulWidget {
   const Babysitform({super.key});
@@ -13,6 +17,12 @@ class Babysitform extends StatefulWidget {
 }
 
 class _BabysitformState extends State<Babysitform> {
+  final db = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+  DateTime? starttime;
+   DateTime? endtime;
+  DateTime? selecteddate;
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -44,7 +54,7 @@ class _BabysitformState extends State<Babysitform> {
                 autovalidateMode: AutovalidateMode.always,
                 validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
                 onDateSelected: (DateTime value) {
-                  print(value);
+                  selecteddate = value;
               },
             ),
             Gap(30),
@@ -60,7 +70,7 @@ class _BabysitformState extends State<Babysitform> {
                 autovalidateMode: AutovalidateMode.always,
                 validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
                 onDateSelected: (DateTime value) {
-                  print(value);
+                  starttime =value;
               },
             ),
             Gap(30),
@@ -76,7 +86,7 @@ class _BabysitformState extends State<Babysitform> {
                 autovalidateMode: AutovalidateMode.always,
                 validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
                 onDateSelected: (DateTime value) {
-                  print(value);
+                  endtime = value;
               },
             ),
             Gap(30),
@@ -110,9 +120,42 @@ class _BabysitformState extends State<Babysitform> {
             Gap(30),
             customButton(
               text: "submit",
-             onPressed: (){
-
-              
+             onPressed: ()async{
+            
+              final userId = _auth.currentUser?.uid;
+               if ( selecteddate != null &&  endtime != null &&  starttime != null ){
+                final id = userId !+ DateTime.now().toString();
+                    // Create a new document in the `Users` collection with the user's id as the document id.
+         await   db.collection("orders").doc('${id}').set({
+           
+               'date':selecteddate,
+                'start-time':starttime,
+                'end-time':endtime,
+                'userid':userId,
+               'id': id,
+                'maid_id':'',
+                'category':'Baby Sitter',
+                 'status':'Pending'
+               });
+                 Fluttertoast.showToast(
+        msg: 'Order made succesfully',
+ 
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+     Navigator.pop(context);
+               } else {
+                Fluttertoast.showToast(
+        msg: 'Please Select all the fields',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+               }
+            
              })
           ],
         )),
