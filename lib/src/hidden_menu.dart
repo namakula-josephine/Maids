@@ -34,7 +34,7 @@ class _hiddenMenuState extends State<hiddenMenu> {
           baseStyle: TextStyle(), 
           selectedStyle: TextStyle(),
           ), 
-        checkout()),
+        const checkout()),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
           name: 'Notifications', 
