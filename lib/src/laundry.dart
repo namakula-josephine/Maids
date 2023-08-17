@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gap/gap.dart';
@@ -30,25 +29,20 @@ class _LaundryformState extends State<Laundryform> {
   String? selectedValue;
   DateTime? selectedtime;
   DateTime? selecteddate;
+  String status = "pending";
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: Text(
-            "MAID MATCH",
-            textAlign: TextAlign.center,
-          ),
-        ),
         backgroundColor: Styles.backgColor,
         body: SafeArea(child: ListView(
+          
           padding: EdgeInsets.symmetric(horizontal: 20,),
           children:[
             Gap(20),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.orange.shade100
+                color: Styles.backgColor
               ),
               child: Text("Laundry order here please!",
               style: Styles.headlineStyle,
@@ -69,7 +63,7 @@ class _LaundryformState extends State<Laundryform> {
                 autovalidateMode: AutovalidateMode.always,
                 validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
                 onDateSelected: (DateTime value) {
-                  selectedtime = value;
+                  selecteddate = value;
               },
             ),
             Gap(30),
@@ -85,7 +79,7 @@ class _LaundryformState extends State<Laundryform> {
                 autovalidateMode: AutovalidateMode.always,
                 validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
                 onDateSelected: (DateTime value) {
-                  selecteddate = value;
+                  selectedtime = value;
               },
             ),
             Gap(30),

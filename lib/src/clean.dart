@@ -1,10 +1,13 @@
-import 'package:date_field/date_field.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_field/date_field.dart';
+//import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:gap/gap.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import '../comp/custom_button.dart';
 import '../utils/app_styles.dart';
 
@@ -31,16 +34,10 @@ final TextEditingController _nameController = TextEditingController();
   DateTime? selecteddate;
   int? rooms;
     String? selectedValue;
+    DateTime? selectedtime;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: Text(
-            "MAID MATCH",
-            textAlign: TextAlign.center,
-          ),
-        ),
         backgroundColor: Styles.backgColor,
         body: SafeArea(child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 20,),
@@ -49,7 +46,7 @@ final TextEditingController _nameController = TextEditingController();
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.orange.shade100
+                color: Styles.backgColor
               ),
               child: Text("House cleaning order here please!",
               style: Styles.headlineStyle,
