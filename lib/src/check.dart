@@ -59,7 +59,9 @@ class _checkoutState extends State<checkout> {
                 title: Row(
                   children: [
                     Text(userData['category'] ?? ''),SizedBox(width: 100),
-                    ElevatedButton(onPressed: (){}, child: Text('Remove'))
+                    ElevatedButton(onPressed: (){
+                      FirebaseFirestore.instance.collection('orders').doc('${userData['id']}').delete();
+                    }, child: Text('Remove'))
                   ],
                 ),
                 subtitle: Row(
