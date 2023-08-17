@@ -5,6 +5,7 @@ import '../utils/app_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:maidmatch_app/src/orderdetails.dart';
 
 class checkout extends StatefulWidget {
   const checkout({super.key});
@@ -60,7 +61,7 @@ class _checkoutState extends State<checkout> {
                 shouldShowButton = false;
                }
                if (date != null){
-                   date = DateFormat('yyyy-MM-dd').format(userData['start-time'].toDate().toLocal()).toString()+'         '+DateFormat('h:mm a').format(userData['date'].toDate()).toString();
+                   date = DateFormat('yyyy-MM-dd').format(userData['date'].toDate().toLocal()).toString()+'         '+DateFormat('h:mm a').format(userData['start-time'].toDate()).toString();
                } else {
                 date = '';
                }
@@ -80,7 +81,15 @@ class _checkoutState extends State<checkout> {
                       child: ElevatedButton(
                         
                         onPressed: (){
-                        
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OrderDetails(
+                  userId: '${userData['userid']}',
+                  orderId: '${userData['id']}',
+                ),
+              ),
+            );
                       }, child: Text('View')),
                     )
                   ],
