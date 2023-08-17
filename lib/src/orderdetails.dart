@@ -20,7 +20,7 @@ class OrderDetails extends StatefulWidget {
 class _OrderDetailsState extends State<OrderDetails> {
 
      final CollectionReference userCollection =
-      FirebaseFirestore.instance.collection('');
+      FirebaseFirestore.instance.collection('orders');
    Stream<QuerySnapshot> streamOrders() {
     return userCollection.where('id', isEqualTo:  '${widget.orderId}').snapshots();
   }   
