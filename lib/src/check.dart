@@ -80,7 +80,7 @@ class _checkoutState extends State<checkout> {
                       child: ElevatedButton(
                         
                         onPressed: (){
-                        FirebaseFirestore.instance.collection('orders').doc('${userData['id']}').delete();
+                        
                       }, child: Text('View')),
                     )
                   ],

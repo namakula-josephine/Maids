@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:maidmatch_app/src/check.dart';
 import 'package:maidmatch_app/src/home.dart';
+import 'package:maidmatch_app/src/book_temp.dart';
 import 'package:maidmatch_app/src/notifications.dart';
 import 'package:maidmatch_app/src/profile.dart';
 
@@ -26,8 +27,8 @@ class _hiddenMenuState extends State<hiddenMenu> {
           name: 'Home', 
           baseStyle: TextStyle(), 
           selectedStyle: TextStyle(),
-          ), 
-        homeScreen()),
+          ),  homeScreen()
+        ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
           name: 'My Orders', 
