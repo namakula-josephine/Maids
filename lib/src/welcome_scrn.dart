@@ -46,8 +46,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
                     width: double.infinity,
                     child: customButton(text: "Let's Go",  
                     onPressed: (){
-                      ap.isSignedIn == true //when true, then fetch shared preferences data
-                      ?
+                      ap.isSignedIn == true?//when true, then fetch shared preferences data
                        Navigator.push(context, 
                       MaterialPageRoute(builder: (context) => const  HomeScreen(),))
                       :Navigator.push(context, MaterialPageRoute(builder: (context) => const signIn(),));

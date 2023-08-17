@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
-import 'package:maidmatch_app/src/b_perm.dart';
+//import 'package:maidmatch_app/src/b_perm.dart';
 import 'package:maidmatch_app/src/book_temp.dart';
+import 'package:maidmatch_app/src/tab4.dart';
 
 import '../utils/app_styles.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class homeScreen extends StatefulWidget {
+  const homeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<homeScreen> createState() => _homeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _homeScreenState extends State<homeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => bPerm1()),
+                    MaterialPageRoute(builder: (context) => tab4()),
                   );
                 },
                 child: Container(
