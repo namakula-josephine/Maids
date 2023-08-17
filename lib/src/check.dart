@@ -14,14 +14,9 @@ class checkout extends StatefulWidget {
 }
 
 class _checkoutState extends State<checkout> {
-final _auth = FirebaseAuth.instance;
+
    
-final Stream<QuerySnapshot> _usersStream =
-   FirebaseFirestore.instance
-              .collection('Laundry order')
-              .where('category',isEqualTo: 'Laundry')
-            //  .where('userid', isEqualTo:  '${FirebaseAuth.instance.currentUser?.uid}')
-              .snapshots();
+
      final CollectionReference userCollection =
       FirebaseFirestore.instance.collection('orders');
 
