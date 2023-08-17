@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+//import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
-
+//import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import '../comp/custom_button.dart';
 import '../utils/app_styles.dart';
 
@@ -14,6 +19,7 @@ class Cleanform extends StatefulWidget {
 }
 
 class _CleanformState extends State<Cleanform> {
+final TextEditingController _nameController = TextEditingController();
 
     final List<String> category = [
     '1-5',
@@ -21,18 +27,17 @@ class _CleanformState extends State<Cleanform> {
     '',
     'CUSTOM ',
     ];
-
+ final db = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+  DateTime? starttime;
+   DateTime? endtime;
+  DateTime? selecteddate;
+  int? rooms;
     String? selectedValue;
+    DateTime? selectedtime;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: Text(
-            "MAID MATCH",
-            textAlign: TextAlign.center,
-          ),
-        ),
         backgroundColor: Styles.backgColor,
         body: SafeArea(child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 20,),
@@ -41,7 +46,7 @@ class _CleanformState extends State<Cleanform> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.orange.shade100
+                color: Styles.backgColor
               ),
               child: Text("House cleaning order here please!",
               style: Styles.headlineStyle,
@@ -61,7 +66,7 @@ class _CleanformState extends State<Cleanform> {
                 autovalidateMode: AutovalidateMode.always,
                 validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
                 onDateSelected: (DateTime value) {
-                  print(value);
+                selecteddate = value;
               },
             ),
             Gap(30),
@@ -77,67 +82,28 @@ class _CleanformState extends State<Cleanform> {
                 autovalidateMode: AutovalidateMode.always,
                 validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
                 onDateSelected: (DateTime value) {
-                  print(value);
+                  starttime = value;
               },
             ),
             Gap(30),
-             DropdownButtonFormField2<String>(
-              isExpanded: true,
-              decoration: InputDecoration(
-                // Add Horizontal padding using menuItemStyleData.padding so it matches
-                // the menu padding when button's width is not specified.
-                contentPadding: const EdgeInsets.symmetric(vertical: 16),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                // Add more decoration..
+
+             
+          TextFormField(
+                decoration: InputDecoration(labelText: 'Enter Number of rooms'),
+                keyboardType: TextInputType.number,
+             controller: _nameController,
+                
+                validator: (value) {
+                  if (value==null) {
+                    'Please enter a value.';
+                  }
+                   selectedValue = value;
+                  return null;
+                },
+                onSaved: (value) {
+                  selectedValue = value;
+                },
               ),
-              hint: const Text(
-                'Select number of rooms',
-                style: TextStyle(fontSize: 14),
-              ),
-              items: category
-                  .map((item) => DropdownMenuItem<String>(
-                        value: item,
-                        child: Text(
-                          item,
-                          style: const TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                      ))
-                  .toList(),
-              validator: (value) {
-                if (value == null) {
-                  return 'Please select category.';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                //Do something when selected item is changed.
-              },
-              onSaved: (value) {
-                selectedValue = value.toString();
-              },
-              buttonStyleData: const ButtonStyleData(
-                padding: EdgeInsets.only(right: 8),
-              ),
-              iconStyleData: const IconStyleData(
-                icon: Icon(
-                  Icons.arrow_drop_down,
-                  color: Colors.black45,
-                ),
-                iconSize: 24,
-              ),
-              dropdownStyleData: DropdownStyleData(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-              menuItemStyleData: const MenuItemStyleData(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-              ),
-            ),
             Gap(30),
             Container(
               child: Text("calculated price", style: TextStyle(
@@ -155,9 +121,51 @@ class _CleanformState extends State<Cleanform> {
             Gap(30),
             customButton(
               text: "submit",
-             onPressed: (){})
+             onPressed: ()async{
+      rooms = int.parse(_nameController.text);
+              final userId = _auth.currentUser?.uid;
+               if ( selecteddate != null &&  starttime != null &&  rooms != null ){
+                final id = userId !+ DateTime.now().toString();
+                    // Create a new document in the `Users` collection with the user's id as the document id.
+         await   db.collection("orders").doc('${id}').set({
+           'rooms':rooms,
+               'date':selecteddate,
+                'start-time':starttime,
+                'userid':userId,
+                'maid_id':'',
+               'id': id,
+                'category':'House Clean',
+                 'status':'Pending'
+               });
+                 Fluttertoast.showToast(
+        msg: 'Order Placed Succesfully',
+ 
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+     Navigator.pop(context);
+               } else {
+                Fluttertoast.showToast(
+        msg: 'Please Select all the fields',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+               }
+
+             })
           ],
         )),
     );
   }
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    _nameController.dispose();
+    super.dispose();
+  }
+
 }
