@@ -92,7 +92,7 @@ class _bookpage1State extends State<bookpage1> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Checkout()),
+                        MaterialPageRoute(builder: (context) => const checkout()),
                       );
                     },
                     child: Container(
