@@ -50,6 +50,15 @@ class _checkoutState extends State<checkout> {
             itemBuilder: (context, index) {
               final userData = activeUsers[index].data() as Map<String, dynamic>;
                var date = userData['date'];
+               bool shouldShowButton = false;
+               bool shouldShowViewButton = false;
+               if (userData['status']=='Pending' ){
+                shouldShowButton = true;
+                shouldShowViewButton = false;
+               } else {
+                shouldShowViewButton = true;
+                shouldShowButton = false;
+               }
                if (date != null){
                    date = DateFormat('yyyy-MM-dd').format(userData['start-time'].toDate().toLocal()).toString()+'         '+DateFormat('h:mm a').format(userData['date'].toDate()).toString();
                } else {
@@ -59,9 +68,21 @@ class _checkoutState extends State<checkout> {
                 title: Row(
                   children: [
                     Text(userData['category'] ?? ''),SizedBox(width: 100),
-                    ElevatedButton(onPressed: (){
-                      FirebaseFirestore.instance.collection('orders').doc('${userData['id']}').delete();
-                    }, child: Text('Remove'))
+                    Visibility(
+                      visible:shouldShowButton,
+                      child: ElevatedButton(
+                        
+                        onPressed: (){
+                        FirebaseFirestore.instance.collection('orders').doc('${userData['id']}').delete();
+                      }, child: Text('Remove')),
+                    ), Visibility(
+                      visible:shouldShowViewButton,
+                      child: ElevatedButton(
+                        
+                        onPressed: (){
+                        FirebaseFirestore.instance.collection('orders').doc('${userData['id']}').delete();
+                      }, child: Text('View')),
+                    )
                   ],
                 ),
                 subtitle: Row(
