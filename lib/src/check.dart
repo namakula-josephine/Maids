@@ -59,10 +59,22 @@ final Stream<QuerySnapshot> _usersStream =
                } else {
                 date = '';
                }
-              return ListTile(
-                title: Text(userData['quantity'] ?? ''),
-                subtitle: Text(date ?? ''),
-                // ... other UI elements for each document
+              return Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                margin: const EdgeInsets.all(15),
+                width: 30,
+                height: 60,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.orangeAccent
+                  ),
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: ListTile(
+                  title: Text(userData['quantity'] ?? ''),
+                  subtitle: Text(date ?? ''),
+                  // ... other UI elements for each document
+                ),
               );
             },
           );

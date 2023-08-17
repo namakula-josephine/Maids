@@ -13,13 +13,6 @@ class _bPerm1State extends State<bPerm1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: Text(
-            "MAID MATCH",
-            textAlign: TextAlign.center,
-          ),
-        ),
         backgroundColor: Styles.backgColor,
     );
   }

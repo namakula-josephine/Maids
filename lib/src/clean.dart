@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
 
 import '../comp/custom_button.dart';
@@ -14,7 +17,9 @@ class Cleanform extends StatefulWidget {
 }
 
 class _CleanformState extends State<Cleanform> {
-
+  
+   final db = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
     final List<String> category = [
     '1-5',
     '',
@@ -23,16 +28,11 @@ class _CleanformState extends State<Cleanform> {
     ];
 
     String? selectedValue;
+    DateTime? selectedtime;
+    DateTime? selecteddate;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: Text(
-            "MAID MATCH",
-            textAlign: TextAlign.center,
-          ),
-        ),
         backgroundColor: Styles.backgColor,
         body: SafeArea(child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 20,),
@@ -41,7 +41,7 @@ class _CleanformState extends State<Cleanform> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.orange.shade100
+                color: Styles.backgColor
               ),
               child: Text("House cleaning order here please!",
               style: Styles.headlineStyle,
@@ -155,7 +155,38 @@ class _CleanformState extends State<Cleanform> {
             Gap(30),
             customButton(
               text: "submit",
-             onPressed: (){})
+             onPressed: () async{
+
+                    final userId = _auth.currentUser?.uid;
+               if (selectedValue != null && selecteddate != null &&  selectedtime != null ){
+                final id = userId !+ DateTime.now().toString();
+                    // Create a new document in the `Users` collection with the user's id as the document id.
+            await   db.collection("Cleaning").doc('${id}').set({
+                'number od rooms':selectedValue,
+                'date':selecteddate,
+                'time':selectedtime,
+                'userid':userId,
+                'id': id
+               });
+                 Fluttertoast.showToast(
+        msg: 'Order made succesfully',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+      Navigator.pop(context);
+               } else {
+                Fluttertoast.showToast(
+        msg: 'Please Select all the fields',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+               }
+
+             })
           ],
         )),
     );

@@ -16,13 +16,6 @@ class _BabysitformState extends State<Babysitform> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: Text(
-            "MAID MATCH",
-            textAlign: TextAlign.center,
-          ),
-        ),
         backgroundColor: Styles.backgColor,
         body: SafeArea(child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 20,),
@@ -31,7 +24,7 @@ class _BabysitformState extends State<Babysitform> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.orange.shade100
+                color: Styles.backgColor
               ),
               child: Text("Babysitter order here please!",
               style: Styles.headlineStyle,
@@ -117,7 +110,10 @@ class _BabysitformState extends State<Babysitform> {
             Gap(30),
             customButton(
               text: "submit",
-             onPressed: (){})
+             onPressed: (){
+
+              
+             })
           ],
         )),
     );
