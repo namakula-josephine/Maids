@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:maidmatch_app/provider/auth_provider.dart';
+// import 'package:maidmatch_app/provider/auth_provider.dart';
 import 'package:maidmatch_app/src/welcome_scrn.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,17 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-            // create: (_) => AuthProvider(),
-            )
-      ],
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: welcomeScreen(),
-        title: "MAID MATCH",
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: welcomeScreen(),
+      title: "MAID MATCH",
     );
   }
 }
