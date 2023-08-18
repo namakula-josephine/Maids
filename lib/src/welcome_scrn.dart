@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:maidmatch_app/comp/custom_button.dart';
 import 'package:maidmatch_app/provider/auth_provider.dart';
 import 'package:maidmatch_app/src/home.dart';
-import 'package:maidmatch_app/src/signin.dart';
+import 'login_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/app_styles.dart';
@@ -49,7 +49,7 @@ class _welcomeScreenState extends State<welcomeScreen> {
                       ap.isSignedIn == true?//when true, then fetch shared preferences data
                        Navigator.push(context, 
                       MaterialPageRoute(builder: (context) => const  homeScreen(),))
-                      :Navigator.push(context, MaterialPageRoute(builder: (context) => const signIn(),));
+                      :Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
                     }),
                   )
                 ],
