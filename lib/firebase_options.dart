@@ -44,30 +44,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCeN9iFwCBD7fH9evhIQrpcPlssW3R5fDE',
-    appId: '1:431535707736:web:bf1bba1923152fc077dc2d',
-    messagingSenderId: '431535707736',
-    projectId: 'maidmatch-4c8e2',
-    authDomain: 'maidmatch-4c8e2.firebaseapp.com',
-    storageBucket: 'maidmatch-4c8e2.appspot.com',
+    apiKey: 'AIzaSyA0F8Sx1yfNDs_voIVI6dfQrHNSz5NiQPI',
+    authDomain: 'maids-3fe29.firebaseapp.com',
+    projectId: 'maids-3fe29',
+    storageBucket: 'maids-3fe29.appspot.com',
+    messagingSenderId: '276643601744',
+    appId: '1:276643601744:web:d5d0ff65c439d390d66055'
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAWQak7sUWJX3q9NYTjA9DHdzhVLqoVyGM',
-    appId: '1:431535707736:android:c1b74986fd415ba877dc2d',
-    messagingSenderId: '431535707736',
-    projectId: 'maidmatch-4c8e2',
-    storageBucket: 'maidmatch-4c8e2.appspot.com',
+    apiKey: 'AIzaSyATKKjWMrlyjJRNxY8484MMxeBpaHLYvkM',
+    appId: '1:276643601744:android:1b0f7465a9e86bbed66055',
+    messagingSenderId: '276643601744',
+    projectId: 'maids-3fe29',
+    storageBucket: 'maids-3fe29.appspot.com'
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAyrX3xwE_RqkEZ8d_PJhUGqVmgrrGBVXc',
-    appId: '1:431535707736:ios:6128174d1b07cb7d77dc2d',
-    messagingSenderId: '431535707736',
-    projectId: 'maidmatch-4c8e2',
-    storageBucket: 'maidmatch-4c8e2.appspot.com',
-    iosClientId: '431535707736-hmqhc0jht892fgmr9qho0pldcehac3qf.apps.googleusercontent.com',
-    iosBundleId: 'com.example.maidmatchApp',
+    apiKey: 'AIzaSyBf-_jXdfBfqlOvMBGyI--tFcmHCCErvMA',
+    iosBundleId: 'maids.cocis.com',
+    appId: '1:276643601744:ios:c609cfcc73918d01d66055',
+    storageBucket: 'maids-3fe29.appspot.com',
+    messagingSenderId: '276643601744',
+    iosClientId: '276643601744-m4ei55alrkpcss1t1trdpp5ai4ojn1lj.apps.googleusercontent.com',
+    projectId: 'maids-3fe29'
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
